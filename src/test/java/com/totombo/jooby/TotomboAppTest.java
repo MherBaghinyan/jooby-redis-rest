@@ -1,7 +1,8 @@
+package com.totombo.jooby;
+
 import static io.restassured.RestAssured.get;
 import static org.hamcrest.Matchers.equalTo;
 
-import com.totombo.jooby.TotomboApp;
 import org.jooby.test.JoobyRule;
 import org.junit.ClassRule;
 import org.junit.Test;
