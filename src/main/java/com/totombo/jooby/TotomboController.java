@@ -12,15 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Path("/api")
 public class TotomboController {
 
-/*
-http://www.baeldung.com/jooby
-https://github.com/eugenp/tutorials/blob/master/jooby/src/test/java/com/baeldung/jooby/AppTest.java
-
-
-http://jooby.org/guides/hello-restful/
-https://github.com/jooby-project/greeting/blob/master/src/main/java/greeting/Greetings.java
- */
-
     @Path({"/test"})
     @GET
     public String api() {
