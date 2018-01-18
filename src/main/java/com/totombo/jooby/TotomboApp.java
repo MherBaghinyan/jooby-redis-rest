@@ -6,7 +6,6 @@ import org.jooby.jedis.Redis;
 import org.jooby.jedis.RedisSessionStore;
 import org.jooby.json.Jackson;
 
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -15,13 +14,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TotomboApp extends Jooby {
 
     {
-        port(8181);
-        securePort(8182);
+        port(9999);
+        securePort(4545);
 
-
-        use(new Jackson());
-
-        use(TotomboController.class);
+//        use(TotomboController.class);
     }
 
     {
@@ -29,11 +25,7 @@ public class TotomboApp extends Jooby {
     }
 
     {
-        AtomicInteger count = new AtomicInteger(0);
-        get("/api/count/get", req -> "count : " + count.incrementAndGet());
-    }
-
-    {
+        use(new Jackson());
 
 		use(new Redis());
 
@@ -51,7 +43,7 @@ public class TotomboApp extends Jooby {
                     ).orElse(new AtomicInteger(0).incrementAndGet());
 
             session.set("counter", sessionValue);
-            return session.get("counter").value();
+            return new Response(session.get("counter").value());
         });
 
         get("/api/count/drop", req -> {
@@ -65,7 +57,7 @@ public class TotomboApp extends Jooby {
                 ).orElse(new AtomicInteger(0).decrementAndGet());
 
         session.set("counter", sessionValue);
-        return session.get("counter").value();
+        return new Response(session.get("counter").value());
         });
     }
 
