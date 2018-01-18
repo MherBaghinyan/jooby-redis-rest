@@ -21,11 +21,10 @@ http://jooby.org/guides/hello-restful/
 https://github.com/jooby-project/greeting/blob/master/src/main/java/greeting/Greetings.java
  */
 
-    @Path({"/count"})
+    @Path({"/test"})
     @GET
-    public String incrementCounter() {
+    public String api() {
 
-        AtomicInteger count = new AtomicInteger(0);
-        return "count: " + count.incrementAndGet();
+        return "Totombo API";
     }
 }
